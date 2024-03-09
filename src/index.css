@@ -2,11 +2,13 @@ body {
     margin: 0;
     padding: 0;
     font-family:'Courier New', Courier, monospace;
+    /* font-weight: bold; */
 }
 
 .calc {
     width: 100%;
-    height: 300px;
+    height: 500px;
+    display: flex;
 }
 
 /* Output Screen */
@@ -23,4 +25,35 @@ body {
     color: #FFFFFF;
     font-size: 30px;
     user-select: none;
+}
+
+/* Operation */
+.op {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    border: 1px solid #b9b9b9;
+    border-left: none;
+    border-bottom: none;
+    background-color: #e0e0e0;
+    align-items: center;
+    font-size: 25px;
+    justify-content: center;
+}
+
+.row-ops {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+}
+
+.col-ops {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.col-ops .op {
+    color: #FFFFFF;
+    background-color: #f4913e;
 }
