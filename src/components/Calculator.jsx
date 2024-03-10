@@ -29,7 +29,7 @@ export default function Calculator() {
                 calculateResult();
                 break;
             default:
-                handleOperation();
+                handleOperation(op);
                 break;
         }
     }
@@ -63,9 +63,18 @@ export default function Calculator() {
 
     function calculateResult() {
         setOperationHistory([...operationHistory, answer, '=']);
+        const num1 = Number(operationHistory[0]);
+        const num2 = Number(operationHistory[2]);
+        const op = operationHistory[1];
+        console.log(num1);
+        console.log(num2);
+        console.log(op)
+        switch (op) {
+
+        }
     }
 
-    function handleOperation() {
+    function handleOperation(op) {
         setIsNextNum(true);
         setOperationHistory([...operationHistory, answer, op]);
     }
