@@ -30,7 +30,6 @@ body {
 /* Operation */
 .op {
     width: 100%;
-    height: 70px;
     display: flex;
     border: 1px solid #b9b9b9;
     border-left: none;
@@ -39,21 +38,31 @@ body {
     align-items: center;
     font-size: 25px;
     justify-content: center;
+    flex: 1 0 25%;
+    height: 100px !important;
 }
 
 .row-ops {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 75%;
 }
 
 .col-ops {
-    display: flex;
-    flex-direction: column;
     width: 25%;
 }
 
 .col-ops .op {
     color: #FFFFFF;
     background-color: #f4913e;
+}
+
+.nums {
+    display: flex;
+    flex-direction: row;
+}
+
+.num-cell:nth-child(13) {
+    flex: 1 0 58%;
 }

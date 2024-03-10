@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import OutputScreen from "./OutputScreen";
 import Operation from "./Operation";
+import NumberCell from "./NumberCell";
 
 
 export default function Calculator() {
@@ -8,6 +9,8 @@ export default function Calculator() {
     let ops = ['AC', '+/-', '%', '/', 'x', '-', '+', '='];
     let rowOps = [];
     let columnOps = [];
+    let nums = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, '.'];
+    let numbers = nums.map(num => <NumberCell value={num} />)
 
     for (var i = 0; i < ops.length; i++) {
         if (i <= 2) {
@@ -23,6 +26,7 @@ export default function Calculator() {
             <div className="calc">
                 <div className="row-ops">
                     {rowOps}
+                    {numbers}
                 </div>
                 <div className="col-ops">
                     {columnOps}
