@@ -3,6 +3,7 @@ body {
     padding: 0;
     font-family:'Courier New', Courier, monospace;
     /* font-weight: bold; */
+    user-select: none;
 }
 
 .calc {
@@ -24,7 +25,6 @@ body {
     margin: 0 10px 0 auto;
     color: #FFFFFF;
     font-size: 30px;
-    user-select: none;
 }
 
 /* Operation */
@@ -65,4 +65,12 @@ body {
 
 .num-cell:nth-child(13) {
     flex: 1 0 58%;
+}
+
+.row-ops .op:hover {
+    background-color: #bcbcbc;
+}
+
+.col-ops .op:hover {
+    background-color: #DB8237;
 }
