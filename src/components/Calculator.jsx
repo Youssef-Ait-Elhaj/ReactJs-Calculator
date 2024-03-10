@@ -10,7 +10,7 @@ export default function Calculator() {
     let rowOps = [];
     let columnOps = [];
     let nums = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0, '.'];
-    let numbers = nums.map(num => <NumberCell value={num} />)
+    let numbers = nums.map((num, i) => <NumberCell key={i} value={num} />)
 
     for (var i = 0; i < ops.length; i++) {
         if (i <= 2) {
