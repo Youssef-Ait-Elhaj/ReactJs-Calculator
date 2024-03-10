@@ -2,7 +2,7 @@
 
 export default function NumberCell(props) {
     return (
-        <div className="num-cell op">
+        <div onClick={() => {props.handleNumberClick(props.value)}} className="num-cell op">
             <p>{props.value}</p>
         </div>
     );

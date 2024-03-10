@@ -16,15 +16,22 @@ body {
 .output-scr {
     width: 100%;
     background-color: #858693;
-    height: 50px;
+    height: 80px;
     display: flex;
     align-items: center;
+    flex-direction: column;
 }
 
-.output {
+.output{
     margin: 0 10px 0 auto;
     color: #FFFFFF;
     font-size: 30px;
+}
+
+.calculation {
+    margin: 10px 10px 10px auto;
+    color: #FFFFFF;
+    font-size: 15px;   
 }
 
 /* Operation */
