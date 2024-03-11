@@ -30,27 +30,35 @@ export default function Calculator() {
                 const num1 = typeof operationHistory[0] === "number" ? operationHistory[0] : Number(operationHistory[0]);
                 const num2 = typeof operationHistory[2] === "number" ? operationHistory[2] : Number(operationHistory[2]);
                 const op = operationHistory[1];
+                const nextOp = operationHistory[operationHistory.length -1];
+                console.log('current op: ' +op);
+                console.log('next op: ' +nextOp);
                 switch (op) {
                     case '%':
                         let modRes = num1 % num2;
                         setAnswer(modRes);
-                        setOperationHistory([modRes, op]);
+                        setOperationHistory([modRes, nextOp]);
+                        break;
                     case '÷':
                         let divRes = num1 / num2;
                         setAnswer(divRes);
-                        setOperationHistory([divRes, op]);
+                        setOperationHistory([divRes, nextOp]);
+                        break;
                     case '×':
                         let multiRes = num1 * num2;
                         setAnswer(multiRes);
-                        setOperationHistory([multiRes, op]);
+                        setOperationHistory([multiRes, nextOp]);
+                        break;
                     case '-':
                         let subRes = num1 - num2;
                         setAnswer(subRes);
-                        setOperationHistory([subRes, op]);
+                        setOperationHistory([subRes, nextOp]);
+                        break;
                     case '+':
                         let sum = num1 + num2;
                         setAnswer(sum);
-                        setOperationHistory([sum, op]);
+                        setOperationHistory([sum, nextOp]);
+                        break;
                     case '=':
 
                 }
@@ -78,8 +86,6 @@ export default function Calculator() {
     }
 
     function handleNumberClick(value) {
-        console.log('val: ' + value);
-        console.log(isNextNum);
         if (isNextNum) {
             setAnswer(value);
             setIsNextNum(false);
