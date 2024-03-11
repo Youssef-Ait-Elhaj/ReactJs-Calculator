@@ -32,13 +32,21 @@ export default function Calculator() {
                 const op = operationHistory[1];
                 switch (op) {
                     case '%':
-                        calculateModulo(num1, num2);
+                        let modRes = num1 % num2;
+                        setAnswer(modRes);
+                        setOperationHistory([modRes, op]);
                     case '÷':
-                        calculateDivision(num1, num2);
+                        let divRes = num1 / num2;
+                        setAnswer(divRes);
+                        setOperationHistory([divRes, op]);
                     case '×':
-                        calculateMultiplication(num1, num2);
+                        let multiRes = num1 * num2;
+                        setAnswer(multiRes);
+                        setOperationHistory([multiRes, op]);
                     case '-':
-                        calculateSubstraction(num1, num2);
+                        let subRes = num1 - num2;
+                        setAnswer(subRes);
+                        setOperationHistory([subRes, op]);
                     case '+':
                         let sum = num1 + num2;
                         setAnswer(sum);
