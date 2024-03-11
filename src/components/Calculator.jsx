@@ -60,7 +60,6 @@ export default function Calculator() {
                         setOperationHistory([sum, nextOp]);
                         break;
                     case '=':
-
                 }
             }
         } else if (operationHistory.length === 1) {
@@ -118,7 +117,6 @@ export default function Calculator() {
 
     function handleOperation(op) {
         setIsNextNum(true);
-        let last = operationHistory[operationHistory.length -1];
         if (!isNextNum) {
             setOperationHistory([...operationHistory, answer, op]);
         }
