@@ -8,8 +8,10 @@ export default function Calculator() {
     const [answer, setAnswer] = useState(0);
     const [instruction, setInstruction] = useState('');
     const [operationHistory, setOperationHistory] = useState([]);
+    const [currentOp, setCurrentOp] = useState([]);
     const [isNextNum, setIsNextNum] = useState(false);
-    const [newNum, setNewNum] = useState(false);
+    const [isNextOp, setIsNextOp] = useState(false);
+
     
     let ops = ['AC', '+/-', '%', '÷', '×', '-', '+', '='];
     let rowOps = [];
@@ -19,18 +21,39 @@ export default function Calculator() {
 
     useEffect(() => {
         let instruction = '';
-        console.log(operationHistory);
         if (operationHistory.length >= 2) {
-            operationHistory.forEach(entry  => {
-                instruction += (' ' + entry);
-            });
-            setInstruction(instruction);
-            
+
+            if (operationHistory[operationHistory.length -1] === '=' && currentOp != []) {
+                setCurrentOp([...operationHistory]);
+                currentOp.forEach(entry  => {
+                    instruction += (' ' + entry);
+                });
+                setInstruction(instruction);
+                if (operationHistory.length === 2) {
+                    operationHistory.pop();
+                    setIsNextOp(true);
+                    console.log(operationHistory);
+                }
+            } else {
+                operationHistory.forEach(entry  => {
+                    instruction += (' ' + entry);
+                });
+                setInstruction(instruction);
+                setCurrentOp([]);
+                console.log(operationHistory);
+            }
+
+            if (operationHistory.length === 2 && operationHistory[operationHistory.length -1] === '=') {
+                operationHistory.pop();
+                // setOperationHistory([...operationHistory]);
+            }
+
             if (operationHistory.length >= 3) {
                 const num1 = typeof operationHistory[0] === "number" ? operationHistory[0] : Number(operationHistory[0]);
                 const num2 = typeof operationHistory[2] === "number" ? operationHistory[2] : Number(operationHistory[2]);
                 const op = operationHistory[1];
                 const nextOp = operationHistory[operationHistory.length -1];
+                console.log(operationHistory);
                 console.log('current op: ' +op);
                 console.log('next op: ' +nextOp);
                 switch (op) {
@@ -75,9 +98,9 @@ export default function Calculator() {
             case '+/-':
                 revertNum();
                 break;
-            case '=':
-                calculateResult();
-                break;
+            // case '=':
+            //     handleOpEqual(op);
+            //     break;
             default:
                 handleOperation(op);
                 break;
@@ -86,6 +109,7 @@ export default function Calculator() {
 
     function handleNumberClick(value) {
         if (isNextNum) {
+            setIsNextOp(false);
             setAnswer(value);
             setIsNextNum(false);
         } else {
@@ -112,14 +136,25 @@ export default function Calculator() {
     }
 
     function calculateResult() {
-        setOperationHistory([...operationHistory, answer, '=']);
+        let last = operationHistory[operationHistory.length -1];
+        if (last !== '=') {
+            setOperationHistory([...operationHistory, answer]);
+        }
     }
 
+
     function handleOperation(op) {
-        setIsNextNum(true);
-        if (!isNextNum) {
-            setOperationHistory([...operationHistory, answer, op]);
+        console.log("isNextOp: " +isNextOp);
+        if (!isNextOp) {
+            setIsNextNum(true);
+            console.log("isNextNum:" +isNextNum);
+            if (!isNextNum) {
+                setOperationHistory([...operationHistory, answer, op]);
+            }
+        } else {
+            setOperationHistory([...operationHistory, op]);
         }
+        console.log(operationHistory);
     }
 
     function calculateModulo(n1, n2) {
