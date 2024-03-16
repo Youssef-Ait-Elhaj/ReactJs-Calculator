@@ -98,9 +98,6 @@ export default function Calculator() {
             case '+/-':
                 revertNum();
                 break;
-            // case '=':
-            //     handleOpEqual(op);
-            //     break;
             default:
                 handleOperation(op);
                 break;
@@ -113,7 +110,8 @@ export default function Calculator() {
             setAnswer(value);
             setIsNextNum(false);
         } else {
-            setAnswer(answer !== 0 ? answer + '' + value : value.toString());
+            console.log(answer);
+            setAnswer(answer !== 0 ? answer + '' + value : value === '.' ? answer + value.toString() : value.toString());
         }
     }
 
@@ -151,7 +149,7 @@ export default function Calculator() {
             if (!isNextNum) {
                 setOperationHistory([...operationHistory, answer, op]);
             }
-        } else {
+        } else if (op !== '=') {
             setOperationHistory([...operationHistory, op]);
         }
         console.log(operationHistory);
