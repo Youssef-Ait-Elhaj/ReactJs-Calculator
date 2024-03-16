@@ -151,8 +151,6 @@ export default function Calculator() {
         } else if (op !== '=') {
             setOperationHistory([...operationHistory, op]);
         }
-        
-        setIsNextOp(false);
     }
 
     function calculateModulo(n1, n2) {
