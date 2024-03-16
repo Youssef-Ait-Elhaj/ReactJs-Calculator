@@ -105,6 +105,7 @@ export default function Calculator() {
     }
 
     function handleNumberClick(value) {
+        console.log(isNextNum);
         if (isNextNum) {
             setIsNextOp(false);
             setAnswer(value);
@@ -142,17 +143,16 @@ export default function Calculator() {
 
 
     function handleOperation(op) {
-        console.log("isNextOp: " +isNextOp);
         if (!isNextOp) {
             setIsNextNum(true);
-            console.log("isNextNum:" +isNextNum);
             if (!isNextNum) {
                 setOperationHistory([...operationHistory, answer, op]);
             }
         } else if (op !== '=') {
             setOperationHistory([...operationHistory, op]);
         }
-        console.log(operationHistory);
+        
+        setIsNextOp(false);
     }
 
     function calculateModulo(n1, n2) {
