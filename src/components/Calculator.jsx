@@ -110,6 +110,10 @@ export default function Calculator() {
             setIsNextOp(false);
             setAnswer(value);
             setIsNextNum(false);
+            if (operationHistory.length === 1) {
+                setOperationHistory([]);
+                setInstruction('');
+            }
         } else {
             console.log(answer);
             setAnswer(answer !== 0 ? answer + '' + value : value === '.' ? answer + value.toString() : value.toString());
