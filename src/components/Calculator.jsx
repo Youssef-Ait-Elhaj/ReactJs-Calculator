@@ -108,7 +108,7 @@ export default function Calculator() {
         console.log(isNextNum);
         if (isNextNum) {
             setIsNextOp(false);
-            setAnswer(value);
+            setAnswer(value === '.' ? '0.' : value);
             setIsNextNum(false);
             if (operationHistory.length === 1) {
                 setOperationHistory([]);
