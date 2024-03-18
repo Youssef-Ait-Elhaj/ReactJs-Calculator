@@ -1,8 +1,8 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# ReactJS Calculator
+This is a simple calculator project that was generated with Vite and written with React, it supports all the basic operations of a calculator including decimals.
+## How to install
+First, clone the project using this command git clone https://github.com/yaitelhajabdeslam/ReactJs-Calculator.git
+Second, navigate to the root directory of the project and run
+    1. npm install
+    2. npm run dev
+and the project should be up.
