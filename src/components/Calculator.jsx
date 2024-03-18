@@ -32,7 +32,6 @@ export default function Calculator() {
                 if (operationHistory.length === 2) {
                     operationHistory.pop();
                     setIsNextOp(true);
-                    console.log(operationHistory);
                 }
             } else {
                 operationHistory.forEach(entry  => {
@@ -40,7 +39,6 @@ export default function Calculator() {
                 });
                 setInstruction(instruction);
                 setCurrentOp([]);
-                console.log(operationHistory);
             }
 
             if (operationHistory.length === 2 && operationHistory[operationHistory.length -1] === '=') {
@@ -53,9 +51,6 @@ export default function Calculator() {
                 const num2 = typeof operationHistory[2] === "number" ? operationHistory[2] : Number(operationHistory[2]);
                 const op = operationHistory[1];
                 const nextOp = operationHistory[operationHistory.length -1];
-                console.log(operationHistory);
-                console.log('current op: ' +op);
-                console.log('next op: ' +nextOp);
                 switch (op) {
                     case '%':
                         let modRes = num1 % num2;
@@ -103,7 +98,6 @@ export default function Calculator() {
     }
 
     function handleNumberClick(value) {
-        console.log(isNextNum);
         if (isNextNum) {
             setIsNextOp(false);
             setAnswer(value === '.' ? '0.' : value);
@@ -113,7 +107,6 @@ export default function Calculator() {
                 setInstruction('');
             }
         } else {
-            console.log(answer);
             setAnswer(answer !== 0 ? answer + '' + value : value === '.' ? answer + value.toString() : value.toString());
         }
     }
@@ -137,14 +130,11 @@ export default function Calculator() {
 
     function revertNum() {
         let invertedNum = -answer;
-        console.log(operationHistory);
         const newOpHistory = operationHistory.map(el => {
             if (el === answer) {
-                console.log("found the number " + el);
                 return invertedNum;
             }
         });
-        console.log(newOpHistory);
         setOperationHistory(newOpHistory);
         setAnswer(invertedNum);
     }
