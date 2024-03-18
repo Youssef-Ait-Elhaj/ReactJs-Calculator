@@ -86,9 +86,6 @@ export default function Calculator() {
                 }
             }
         }
-        //  else if (operationHistory.length === 1) {
-        //     setOperationHistory([...operationHistory, operationHistory[operationHistory.length-1]])
-        // }
     }, [operationHistory])
 
     function handleOperationClick(op) {
