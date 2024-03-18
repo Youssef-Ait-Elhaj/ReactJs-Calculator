@@ -85,9 +85,10 @@ export default function Calculator() {
                     case '=':
                 }
             }
-        } else if (operationHistory.length === 1) {
-            setOperationHistory([...operationHistory, operationHistory[operationHistory.length-1]])
         }
+        //  else if (operationHistory.length === 1) {
+        //     setOperationHistory([...operationHistory, operationHistory[operationHistory.length-1]])
+        // }
     }, [operationHistory])
 
     function handleOperationClick(op) {
@@ -132,19 +133,24 @@ export default function Calculator() {
         setAnswer(0);
         setOperationHistory([]);
         setInstruction('');
+        setCurrentOp([]);
+        setIsNextNum(false);
+        setIsNextOp(false);
     }
 
     function revertNum() {
-        setAnswer(-answer);
+        let invertedNum = -answer;
+        console.log(operationHistory);
+        const newOpHistory = operationHistory.map(el => {
+            if (el === answer) {
+                console.log("found the number " + el);
+                return invertedNum;
+            }
+        });
+        console.log(newOpHistory);
+        setOperationHistory(newOpHistory);
+        setAnswer(invertedNum);
     }
-
-    function calculateResult() {
-        let last = operationHistory[operationHistory.length -1];
-        if (last !== '=') {
-            setOperationHistory([...operationHistory, answer]);
-        }
-    }
-
 
     function handleOperation(op) {
         if (!isNextOp) {
@@ -155,26 +161,6 @@ export default function Calculator() {
         } else if (op !== '=') {
             setOperationHistory([...operationHistory, op]);
         }
-    }
-
-    function calculateModulo(n1, n2) {
-        // setAnswer(n1 % n2);
-    }
-
-    function calculateDivision(n1, n2) {
-        // setAnswer(n1 / n2);
-    }
-
-    function calculateMultiplication(n1, n2) {
-        // setAnswer(n1 * n2);
-    }
-
-    function calculateSubstraction(n1, n2) {
-        // setAnswer(n1 - n2);
-    }
-
-    function calculateAddition(n1, n2) {
-        // setAnswer(n1 + n2);
     }
 
     return (
