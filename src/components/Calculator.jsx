@@ -20,6 +20,7 @@ export default function Calculator() {
     let numbers = nums.map((num, i) => <NumberCell handleNumberClick={handleNumberClick} key={i} value={num} />)
 
     useEffect(() => {
+        handlePaste();
         let instruction = '';
         if (operationHistory.length >= 2) {
 
@@ -148,6 +149,30 @@ export default function Calculator() {
         } else if (op !== '=') {
             setOperationHistory([...operationHistory, op]);
         }
+    }
+
+    async function handlePaste() {
+        var ctrlDown = false, ctrlKey = 17, cmdKey = 91, vKey = 86;
+        document.addEventListener("keydown", function(e) {
+            if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = true;
+        })
+        document.addEventListener("keyup", function(e) {
+            if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = false;
+        });
+    
+        document.addEventListener("keydown", async function(e) {
+            if (ctrlDown && (e.keyCode == vKey)) {
+                const content = await navigator.clipboard.readText();
+                if (isNumeric(content))
+                    setAnswer(Number(content));
+                else
+                    alert("Please enter a valid number");
+            }
+        });
+    }
+
+    function isNumeric(str) {
+        return !isNaN(str) && !isNaN(parseFloat(str));
     }
 
     return (

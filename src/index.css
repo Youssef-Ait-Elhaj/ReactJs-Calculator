@@ -2,7 +2,6 @@ body {
     margin: 0;
     padding: 0;
     font-family:'Courier New', Courier, monospace;
-    /* font-weight: bold; */
     user-select: none;
 }
 
@@ -81,3 +80,5 @@ body {
 .col-ops .op:hover {
     background-color: #DB8237;
 }
+
+.github-fork-ribbon:before { background-color: #333; }
