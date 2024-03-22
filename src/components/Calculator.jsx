@@ -163,9 +163,11 @@ export default function Calculator() {
         document.addEventListener("keydown", async function(e) {
             if (ctrlDown && (e.keyCode == vKey)) {
                 const content = await navigator.clipboard.readText();
-                if (isNumeric(content))
+                if (isNumeric(content)) {
+                    setIsNextOp(false);
                     setAnswer(Number(content));
-                else
+                    setIsNextNum(false);
+                } else
                     alert("Please enter a valid number");
             }
         });
