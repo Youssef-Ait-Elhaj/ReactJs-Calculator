@@ -164,9 +164,7 @@ export default function Calculator() {
             if (ctrlDown && (e.keyCode == vKey)) {
                 const content = await navigator.clipboard.readText();
                 if (isNumeric(content)) {
-                    setIsNextOp(false);
-                    setAnswer(Number(content));
-                    setIsNextNum(false);
+                    handleNumberClick(Number(content));
                 } else
                     alert("Please enter a valid number");
             }
