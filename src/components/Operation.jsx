@@ -1,10 +1,9 @@
-import { useEffect } from "react";
 
 
-export default function Operation(props) {
+export default function Operation({handleOperationClick, symbol}) {
     return (
-        <div onClick={() => {props.handleOperationClick(props.symbol)}} className="op">
-            <p className="op-symbol">{props.symbol}</p>
+        <div onClick={() => {handleOperationClick(symbol)}} className="op">
+            <p className="op-symbol">{symbol}</p>
         </div>
     )
 }

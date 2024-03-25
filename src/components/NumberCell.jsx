@@ -1,9 +1,9 @@
 
 
-export default function NumberCell(props) {
+export default function NumberCell({handleNumberClick, value}) {
     return (
-        <div onClick={() => {props.handleNumberClick(props.value)}} className="num-cell op">
-            <p>{props.value}</p>
+        <div onClick={() => {handleNumberClick(value)}} className="num-cell op">
+            <p>{value}</p>
         </div>
     );
 }
