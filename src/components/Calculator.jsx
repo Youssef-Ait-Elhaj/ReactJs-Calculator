@@ -44,7 +44,6 @@ export default function Calculator() {
 
             if (operationHistory.length === 2 && operationHistory[operationHistory.length -1] === '=') {
                 operationHistory.pop();
-                // setOperationHistory([...operationHistory]);
             }
 
             if (operationHistory.length >= 3) {
