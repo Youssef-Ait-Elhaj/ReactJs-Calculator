@@ -23,8 +23,10 @@ export default function Calculator() {
         handlePaste();
         let instruction = '';
         if (operationHistory.length >= 2) {
-
+            console.log(operationHistory);
+            console.log(currentOp);
             if (operationHistory[operationHistory.length -1] === '=' && currentOp != []) {
+                console.log(operationHistory);
                 setCurrentOp([...operationHistory]);
                 currentOp.forEach(entry  => {
                     instruction += (' ' + entry);
@@ -143,6 +145,7 @@ export default function Calculator() {
         if (!isNextOp) {
             setIsNextNum(true);
             if (!isNextNum) {
+                setCurrentOp([...operationHistory, answer, op]);
                 setOperationHistory([...operationHistory, answer, op]);
             }
         } else if (op !== '=') {
